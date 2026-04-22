@@ -16,4 +16,4 @@ This course covers the fundamentals and recent advancements in Generative AI.
 
 ### 📚 Lecture Materials
 
-- [Lecture 9: Generative AI](/lecture/)
+- [Lecture 9: Generative AI](/9-generative-ai/)
