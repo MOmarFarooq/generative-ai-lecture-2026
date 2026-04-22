@@ -98,7 +98,7 @@ Look at that. In about a few seconds, it read this entire document and gave me a
 - The above speaker notes also turned into Powerpoint slide within a few seconds using WPS AI.
 
 {{< pdf-viewer
-    url="/generative-ai-lecture-2026/data/ISAC-6g-En.pdf"
+    url="/generative-ai-lecture-2026/data/ISAC.pdf"
     showDownload="true"
     showThumbnails="true"
 >}}
