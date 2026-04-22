@@ -1,7 +1,7 @@
-baseURL = 'http://localhost:1313/'
+baseURL = 'https://momarfarooq.github.io/generative-ai-lecture-2026/'
 languageCode = 'en-us'
 title = 'Generative AI Lecture'
-# theme = 'ananke'buildFuture = true
+buildFuture = true
 
 [markup]
   [markup.goldmark]
