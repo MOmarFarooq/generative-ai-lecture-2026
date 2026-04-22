@@ -1,0 +1,9 @@
+<div class="pdf-viewer">
+  <embed src="{{ .Get "url" }}" 
+         type="application/pdf" 
+         width="100%" 
+         height="500px">
+  {{ if eq (.Get "showDownload") "true" }}
+    <a href="{{ .Get "url" }}" download>Download PDF</a>
+  {{ end }}
+</div>

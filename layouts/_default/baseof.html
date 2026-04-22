@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | {{ .Site.Title }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Content containers */
+        .content {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        /* Images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        /* Videos */
+        video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        /* Audio */
+        audio {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        /* PDF embeds */
+        embed {
+            max-width: 100%;
+            height: 500px;
+            display: block;
+            margin: 20px auto;
+        }
+        
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            overflow-x: auto;
+            display: block;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        /* Code blocks */
+        pre {
+            background: #f6f8fa;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+        }
+        
+        /* Custom block styles */
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .code-title {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            border-bottom: 1px solid #444;
+            color: #ffd700;
+        }
+        
+        .code-block pre {
+            background: #1e1e1e;
+            margin: 0;
+            border-radius: 0;
+        }
+        
+        .text-block {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .text-title {
+            background: rgba(0,0,0,0.2);
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .text-content {
+            padding: 20px;
+        }
+        
+        .text-content p {
+            margin-bottom: 10px;
+        }
+        
+        /* Headings */
+        h1 { font-size: 2em; margin: 20px 0 10px; }
+        h2 { font-size: 1.5em; margin: 20px 0 10px; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        h3 { font-size: 1.25em; margin: 15px 0 10px; }
+        
+        /* Lists */
+        ul, ol {
+            margin: 10px 0 10px 30px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="content">
+        {{ block "main" . }}{{ end }}
+    </main>
+</body>
+</html>
+    <style>
+        /* Ensure content doesn't overflow */
+        .content {
+            max-width: 100%;
+            overflow-x: auto;
+            word-wrap: break-word;
+        }
+        
+        .text-content {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .text-content p, 
+        .text-content li,
+        .text-content h1,
+        .text-content h2,
+        .text-content h3 {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        code {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    </style>
+<script>
+// Wait for page to load
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Handle Animate buttons
+    document.querySelectorAll('.animate-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const wrapper = this.closest('.code-wrapper, .text-wrapper');
+            const contentArea = wrapper.querySelector('.content-area');
+            const displayElement = wrapper.querySelector('.code-display, .text-display');
+            
+            // Expand if collapsed
+            if (contentArea.style.maxHeight === '0px' || contentArea.style.maxHeight === '0') {
+                contentArea.style.maxHeight = contentArea.scrollHeight + 'px';
+            }
+            
+            // For code blocks - typewriter effect
+            if (displayElement.classList.contains('code-display')) {
+                const originalText = displayElement.textContent;
+                displayElement.textContent = '';
+                let i = 0;
+                const btn = this;
+                btn.disabled = true;
+                
+                function typeWriter() {
+                    if (i < originalText.length) {
+                        displayElement.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 10);
+                    } else {
+                        btn.disabled = false;
+                    }
+                }
+                typeWriter();
+            }
+            
+            // For text blocks - fade-in effect
+            if (displayElement.classList.contains('text-display')) {
+                const paragraphs = displayElement.querySelectorAll('p, li');
+                const btn = this;
+                btn.disabled = true;
+                
+                paragraphs.forEach(p => {
+                    p.style.opacity = '0';
+                    p.style.transform = 'translateY(20px)';
+                    p.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                });
+                
+                paragraphs.forEach((p, index) => {
+                    setTimeout(() => {
+                        p.style.opacity = '1';
+                        p.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                }, paragraphs.length * 100 + 500);
+            }
+        });
+    });
+    
+    // Handle Collapse/Expand buttons
+    document.querySelectorAll('.collapse-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const wrapper = this.closest('.code-wrapper, .text-wrapper');
+            const contentArea = wrapper.querySelector('.content-area');
+            const displayElement = wrapper.querySelector('.code-display, .text-display');
+            
+            // Toggle collapse
+            if (contentArea.style.maxHeight === '0px' || contentArea.style.maxHeight === '0') {
+                // Expand
+                contentArea.style.maxHeight = contentArea.scrollHeight + 'px';
+                this.textContent = '− Collapse';
+                // Restore original content if it's a code block
+                if (displayElement.classList.contains('code-display')) {
+                    const originalText = displayElement.getAttribute('data-original');
+                    if (originalText) {
+                        displayElement.textContent = originalText;
+                    }
+                }
+                // Restore text visibility
+                if (displayElement.classList.contains('text-display')) {
+                    const paragraphs = displayElement.querySelectorAll('p, li');
+                    paragraphs.forEach(p => {
+                        p.style.opacity = '1';
+                        p.style.transform = 'translateY(0)';
+                    });
+                }
+            } else {
+                // Collapse
+                contentArea.style.maxHeight = '0px';
+                this.textContent = '+ Expand';
+                // Store original content for code blocks
+                if (displayElement.classList.contains('code-display')) {
+                    if (!displayElement.getAttribute('data-original')) {
+                        displayElement.setAttribute('data-original', displayElement.textContent);
+                    }
+                }
+            }
+        });
+    });
+    
+    // Initialize all content areas
+    document.querySelectorAll('.content-area').forEach(area => {
+        area.style.maxHeight = area.scrollHeight + 'px';
+    });
+    
+    // Store original code content
+    document.querySelectorAll('.code-display').forEach(code => {
+        if (!code.getAttribute('data-original')) {
+            code.setAttribute('data-original', code.textContent);
+        }
+    });
+    
+    // Initialize text visibility
+    document.querySelectorAll('.text-display').forEach(text => {
+        const paragraphs = text.querySelectorAll('p, li');
+        paragraphs.forEach(p => {
+            p.style.opacity = '1';
+            p.style.transform = 'translateY(0)';
+        });
+    });
+});
+</script>

@@ -1,0 +1,181 @@
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide-in from left */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide-in from right */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Typing animation for text */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blinkCursor {
+    from, to {
+        border-right-color: transparent;
+    }
+    50% {
+        border-right-color: #666;
+    }
+}
+
+/* Animated code block */
+.animated-code {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    overflow-x: auto;
+    animation: fadeIn 0.6s ease-out, slideInLeft 0.5s ease-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.animated-code .code-header {
+    background: #2d2d2d;
+    color: #ffd700;
+    padding: 8px 12px;
+    margin: -16px -16px 16px -16px;
+    border-radius: 8px 8px 0 0;
+    font-family: monospace;
+    font-weight: bold;
+    animation: slideInRight 0.5s ease-out;
+}
+
+.animated-code pre {
+    margin: 0;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.animated-code code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Animated text block */
+.animated-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin: 16px 0;
+    animation: fadeIn 0.6s ease-out, slideInRight 0.5s ease-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.animated-text .text-header {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.animated-text .text-content {
+    animation: fadeIn 0.8s ease-out;
+    line-height: 1.6;
+}
+
+.animated-text .text-content p {
+    margin: 0 0 10px 0;
+}
+
+.animated-text .text-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Typewriter effect for specific elements */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #666;
+    animation: typing 3s steps(40, end), blinkCursor 0.75s step-end infinite;
+}
+
+/* Staggered animation for list items */
+.animated-text ul li,
+.animated-text ol li {
+    animation: slideInRight 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.animated-text ul li:nth-child(1) { animation-delay: 0.1s; }
+.animated-text ul li:nth-child(2) { animation-delay: 0.2s; }
+.animated-text ul li:nth-child(3) { animation-delay: 0.3s; }
+.animated-text ul li:nth-child(4) { animation-delay: 0.4s; }
+.animated-text ul li:nth-child(5) { animation-delay: 0.5s; }
+
+/* Button styles */
+.animate-btn:hover {
+    background: #0056b3 !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+.collapse-btn:hover {
+    background: #5a6268 !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+.animate-btn:active, .collapse-btn:active {
+    transform: scale(0.98);
+}
+
+/* Wrapper styles */
+.animated-code-wrapper, .animated-text-wrapper {
+    margin: 20px 0;
+}
+
+/* Smooth transitions */
+.animated-code, .animated-text {
+    overflow: hidden;
+}
+
+/* Loading indicator while animating */
+.animate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

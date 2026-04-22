@@ -1,0 +1,14 @@
+<div class="code-wrapper" style="margin: 20px 0; border: 1px solid #444; border-radius: 8px; overflow: hidden;">
+    <div style="display: flex; justify-content: space-between; align-items: center; background: #2d2d2d; padding: 8px 15px;">
+        {{ with .Get "title" }}
+            <span style="color: #ffd700; font-weight: bold;">{{ . }}</span>
+        {{ end }}
+        <div>
+            <button class="animate-btn" data-type="code" style="padding: 4px 12px; margin-right: 8px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">▶ Animate</button>
+            <button class="collapse-btn" data-type="code" style="padding: 4px 12px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">− Collapse</button>
+        </div>
+    </div>
+    <div class="content-area" style="transition: max-height 0.3s ease; overflow: hidden; max-height: 500px;">
+        <pre style="margin: 0; padding: 16px; background: #1e1e1e;"><code class="code-display" style="color: #d4d4d4; display: block; white-space: pre-wrap;">{{ .Inner | safeHTML }}</code></pre>
+    </div>
+</div>
