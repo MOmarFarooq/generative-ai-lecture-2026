@@ -432,6 +432,10 @@ Everything becomes tokens. Everything is generated one piece at a time, looking 
 
 With these two ideas in mind, you now understand more about how AI works than most people who use it every day.
 
+## Generative AI Video
+<!-- [GenAI_Demo.mp4](GenAI_Demo.mp4)  -->
+- <a href="/generative-ai-lecture-2026/data/GenAI_Demo.mp4" target="_blank" rel="noopener noreferrer">Generative AI Video</a>
+
 ## Related links
 
 - <a href="https://app.heygen.com/" target="_blank" rel="noopener noreferrer">Heygen</a>
