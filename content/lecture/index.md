@@ -1,7 +1,6 @@
 ---
 title: "Lecture 8: Generative AI"
 slug: 9-generative-ai
-date: 2026-04-24
 math: true
 ---
 
